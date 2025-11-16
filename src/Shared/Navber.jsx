@@ -5,6 +5,7 @@ import { NavLink } from 'react-router';
 const Navber = () => {
   const links =<>
   <li><NavLink to={``}>Services</NavLink></li>
+  <li><NavLink to={`/coverage`}>Coverage</NavLink></li>
   </>
     return (
        <div className="navbar bg-base-100 shadow-sm">
