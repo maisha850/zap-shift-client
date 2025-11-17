@@ -1,18 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import GoogleLogIn from './GoogleLogIn';
 
 
 const LogIn = () => {
     const{register , handleSubmit, formState: {errors}} = useForm()
     const{signInUser} = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
     const handleLogIn=(data)=>{
         console.log(data)
          signInUser(data.email , data.password)
         .then((res)=>{
             console.log(res.user)
+            navigate(location?.state || '/')
         })
         .catch(err=>{
             console.log(err.message)
@@ -37,7 +40,7 @@ const LogIn = () => {
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-primary mt-4">Login</button>
         </fieldset>
-        <p>New to zapShift? Please<Link className="text-blue-500" to={'/register'} > register</Link> </p>
+        <p>New to zapShift? Please<Link state={location.state} className="text-blue-500" to={'/register'} > register</Link> </p>
         </form>
         <GoogleLogIn></GoogleLogIn>
       </div>

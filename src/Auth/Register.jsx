@@ -1,13 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import GoogleLogIn from './GoogleLogIn';
 import axios from 'axios';
 
 const Register = () => {
     const {register , handleSubmit, formState:{errors}}=useForm()
     const {createUser ,updateUser } = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
     const handleRegister=(data)=>{
         console.log(data)
         console.log('photo' , data.photo[0])
@@ -28,6 +30,7 @@ const Register = () => {
                 updateUser(profile)
                 .then(()=>{
                     console.log('profile updated')
+                    navigate(location?.state , '/')
                 })
                 .catch((err)=>{
                     console.log(err)
@@ -68,7 +71,7 @@ const Register = () => {
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-primary mt-4">Register</button>
         </fieldset>
-        <p>Already have account in zapShift? Please<Link className="text-blue-500" to={'/logIn'} > Log In</Link> </p>
+        <p>Already have account in zapShift? Please<Link state={location.state} className="text-blue-500" to={'/logIn'} > Log In</Link> </p>
              </form>
              <GoogleLogIn></GoogleLogIn>
         </div>

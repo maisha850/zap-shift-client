@@ -7,6 +7,7 @@ const Navber = () => {
   const {user , logOut}=useAuth()
   const links =<>
   <li><NavLink to={``}>Services</NavLink></li>
+  <li><NavLink to={`/send-parcel`}>Send Parcel</NavLink></li>
   <li><NavLink to={`/coverage`}>Coverage</NavLink></li>
   </>
   const handleLogOut=()=>{
@@ -38,7 +39,7 @@ const Navber = () => {
   </div>
   <div className="navbar-end ">
   {user ?   <a onClick={handleLogOut} className="btn btn-outline">Log Out</a> :   <Link to={'/logIn'} className="btn btn-outline">Log In</Link>}
-  <Link to={'/beARider'} className='btn btn-primary ml-3'>Be a Rider</Link>
+  <Link to={'/rider'} className='btn btn-primary ml-3'>Be a Rider</Link>
   </div>
 </div>
     );
