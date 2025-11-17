@@ -5,9 +5,9 @@ import bg from '../assets/authImage.png'
 
 const AuthLayout = () => {
     return (
-        <div className=' max-w-7xl mx-auto'>
+        <div className=' max-w-7xl mx-auto '>
             <Logo></Logo>
-           <div className='flex justify-between'>
+           <div className='flex items-center justify-between py-15'>
             
             <Outlet></Outlet> 
            
